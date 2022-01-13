@@ -62,9 +62,7 @@ export const useFetchData = () => {
 		);
 		setDataForQ1(dataForTheQ1);
 
-		const dataForTheQ2 = await Promise.all(
-			data
-		)
+		
 
 	}
 	return { data, dataForQ1 };

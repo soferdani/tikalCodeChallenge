@@ -7,10 +7,14 @@ export default function BarChart({ data }) {
         { name: "Endor", population: '30000000' }
     ]
 
-    
+
     return (
-        <div className='BarChart'>
-            this is a component
-        </div>
+        <>
+            <p className='legend'>
+                <span className="expense">Expense</span>
+                
+                
+            </p>
+        </>
     );
 }

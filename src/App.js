@@ -8,6 +8,7 @@ import { useFetchData } from './hooks';
 function App() {
   const {data, dataForQ1} = useFetchData();
 
+  console.log(dataForQ1);
 
   return (
     <div className="App">
