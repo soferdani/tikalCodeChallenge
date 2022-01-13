@@ -34,17 +34,18 @@ export const useFetchData = () => {
 		};
 
 		const fetchPilotInfoFromUrl = async (pilotsUrl) => {
+			let allPilotsData = [];
 			for (let pilotUrl of pilotsUrl) {
 				const response = await axios.get(pilotUrl);
-				let toReturn = {
+				let allPilotsFromOneVehicle = {
 					pilotName: response.data.name,
 					homeWorldInfo: await fetchHomeWorldInfoFromUrl(
 						response.data.homeworld
 					),
 				};
-				console.log(toReturn);
-				return toReturn;
+				allPilotsData.push(allPilotsFromOneVehicle);
 			}
+			return allPilotsData;
 		};
 
 		const finalData = await Promise.all(

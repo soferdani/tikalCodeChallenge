@@ -1,9 +1,7 @@
 export default function Table({ data, setData }) {
 	
 
-
-
-	console.log(data);
+    console.log(data);
 	return (
 	<>
 		<button>click</button>
