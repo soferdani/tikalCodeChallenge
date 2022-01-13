@@ -4,6 +4,7 @@ import axios from "axios";
 export const useFetchData = () => {
 	// const [isLoading, setIsLoading] = useState(false);
 	const [data, setDate] = useState([]);
+	const [dataForQ1, setDataForQ1] = useState([]);
 	const [pageNumber, setPageNumber] = useState(1);
 
 	useEffect(() => {
@@ -29,7 +30,10 @@ export const useFetchData = () => {
 	async function clearData() {
 		const fetchHomeWorldInfoFromUrl = async (url) => {
 			const response = await axios.get(url);
-			let toReturn = [response.data.name, response.data.population];
+			let toReturn = {
+				name: response.data.name,
+				population: response.data.population,
+			}
 			return toReturn;
 		};
 
@@ -48,16 +52,21 @@ export const useFetchData = () => {
 			return allPilotsData;
 		};
 
-		const finalData = await Promise.all(
+		const dataForTheQ1 = await Promise.all(
 			data
-				.filter((item) => {return item.pilots.length !== 0})
-				.map((item) => new Promise(async (resolve) => { 
+				.filter((item) => { return item.pilots.length !== 0 })
+				.map((item) => new Promise(async (resolve) => {
 					const pilots = await fetchPilotInfoFromUrl(item.pilots);
 					resolve({ vehicleName: item.name, pilots })
-				})) 
+				}))
 		);
-		setDate(finalData);
+		setDataForQ1(dataForTheQ1);
+
+		const dataForTheQ2 = await Promise.all(
+			data
+		)
+
 	}
-	return { data, setDate };
+	return { data, dataForQ1 };
 };
 

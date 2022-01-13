@@ -6,12 +6,12 @@ import { useFetchData } from './hooks';
 
 
 function App() {
-  const {data, setDate} = useFetchData();
+  const {data, dataForQ1} = useFetchData();
 
 
   return (
     <div className="App">
-      <Table data={data} setData={setDate} />
+      <Table data={dataForQ1} />
       <BarChart data={data}/>
     </div>
   );
