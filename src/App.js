@@ -1,4 +1,5 @@
 import './App.css';
+import BarChart from './components/BarChart';
 import Table from './components/Table';
 import { useFetchData } from './hooks';
 
@@ -10,8 +11,8 @@ function App() {
 
   return (
     <div className="App">
-      this is a test
       <Table data={data} setData={setDate} />
+      <BarChart data={data}/>
     </div>
   );
 }

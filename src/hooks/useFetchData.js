@@ -50,17 +50,14 @@ export const useFetchData = () => {
 
 		const finalData = await Promise.all(
 			data
-				.filter((item) => {
-					return item.pilots.length !== 0;
-				})
-				.map(async (item) => {
-					return {
-						vehicleName: item.name,
-						pilots: await fetchPilotInfoFromUrl(item.pilots),
-					};
-				})
+				.filter((item) => {return item.pilots.length !== 0})
+				.map((item) => new Promise(async (resolve) => { 
+					const pilots = await fetchPilotInfoFromUrl(item.pilots);
+					resolve({ vehicleName: item.name, pilots })
+				})) 
 		);
 		setDate(finalData);
 	}
 	return { data, setDate };
 };
+

@@ -1,34 +1,30 @@
 export default function Table({ data, setData }) {
-	
+	let planetsArrayForQ2 = [];
+	let currantTopVehicle = 0;
 
-    console.log(data);
+	console.log(data);
+
+	data.forEach((vehicle, index) => {
+		console.log(vehicle);
+		vehicle.pilots.forEach((pilot) => {
+			console.log(pilot.homeWorldInfo);
+			planetsArrayForQ2.push(pilot.homeWorldInfo);
+		});
+	});
+
 	return (
-	<>
-		<button>click</button>
-			<div className='App'>
-				{/* <table>
-					<tr>
-						<th>Name</th>
-						<th>Age</th>
-						<th>Gender</th>
-					</tr>
-					<tr>
-						<td>Anom</td>
-						<td>19</td>
-						<td>Male</td>
-					</tr>
-					<tr>
-						<td>Megha</td>
-						<td>19</td>
-						<td>Female</td>
-					</tr>
-					<tr>
-						<td>Subham</td>
-						<td>25</td>
-						<td>Male</td>
-					</tr>
-				</table> */}
-			</div>
-    </>
+		<>
+			<table>
+				<tr>
+					<td>Vehicle name with the largest sum is: {} </td>
+				</tr>
+				<tr>
+					<td>Related home planets and their respective: </td>
+				</tr>
+				<tr>
+					<td>Related pilot names:</td>
+				</tr>
+			</table>
+		</>
 	);
 }
