@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <Table data={dataForQ1} />
+      <Table vehicles={dataForQ1} />
       <BarChart data={data}/>
     </div>
   );

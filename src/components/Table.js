@@ -1,18 +1,9 @@
-export default function Table({ data: vehicles }) {
-	let vehicleName = "Snowspeeder";
-	let planetsWithPopulation = [
-		{ name: "Tatooine", population: "200000" },
-		{ name: "Corellia", population: "3000000000" },
-	];
+export default function Table({ vehicles }) {
 
-	let pilotNames = ["Luke Skywalker", "Wedge Antilles"];
-
-	let temp = [];
 	const biggestVehicle = vehicles.reduce((acc, vehicle) => {
 		const pilotsPopulation = vehicle.pilots
 			.map((pilot) => pilot.homeWorldInfo.population)
 			.reduce((acc, population) => {
-				debugger;
 				return acc + Number(population === "unknown" ? 0 : population);
 			}, 0);
 		vehicle.pilotsPopulation = pilotsPopulation;
@@ -21,18 +12,6 @@ export default function Table({ data: vehicles }) {
 		}
 		return acc;
 	}, {});
-	console.log(biggestVehicle);
-	//     pilots:
-	// 0:
-	// homeWorldInfo: {name: 'Tatooine', population: '200000'}
-	// pilotName: "Luke Skywalker"
-
-	// data.console.log(data);
-	// data.forEach((item) => {
-	// 	item.pilots.forEach((pilot) => {
-	// 		console.log(pilot.homeWorldInfo.population);
-	// 	});
-	// });
 
 	return (
 		<>
@@ -40,27 +19,34 @@ export default function Table({ data: vehicles }) {
 				<tbody>
 					<tr>
 						<td>
-							Vehicle name with the largest sum is: {<h4>{vehicleName}</h4>}{" "}
+							Vehicle name with the largest sum is: {<h4>{biggestVehicle.vehicleName}</h4>}{" "}
 						</td>
 					</tr>
 					<tr>
 						<td>
-							Related home planets and their respective:{" "}
-							{planetsWithPopulation.map((item) => {
-								return (
-									<h4>
-										{item.name} with population {item.population}
-									</h4>
-								);
-							})}{" "}
+                            Related home planets and their respective:
+                            {
+                                biggestVehicle?.pilots?.map((pilot, index) => {
+                                    let population = pilot.homeWorldInfo?.population;
+                                    let worldName = pilot.homeWorldInfo?.name;
+                                    return (
+                                        <h4 key={index} >{worldName} {population}</h4>
+                                    )
+                                })
+                            }
+                            
 						</td>
 					</tr>
 					<tr>
 						<td>
 							Related pilot names:
-							{pilotNames.map((pilot) => {
-								return <h4>{pilot}</h4>;
-							})}
+                            {
+                                biggestVehicle?.pilots?.map((pilot, index) => {
+                                    return (
+                                        <h4 key={index} >{pilot.pilotName}</h4>
+                                    )
+                                })
+                            }
 						</td>
 					</tr>
 				</tbody>
