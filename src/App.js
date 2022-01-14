@@ -1,19 +1,18 @@
 import './App.css';
 import BarChart from './components/BarChart';
 import Table from './components/Table';
-import { useFetchData } from './hooks';
+import { useFetchData, useFetchPlanets } from './hooks';
 
 
 
 function App() {
-  const {data, dataForQ1} = useFetchData();
-
-  console.log(dataForQ1);
-
+  const { dataForQ1} = useFetchData();
+  const { dataForQ2 } = useFetchPlanets();
+  
   return (
     <div className="App">
       <Table vehicles={dataForQ1} />
-      <BarChart data={data}/>
+      <BarChart planets={dataForQ2}/>
     </div>
   );
 }

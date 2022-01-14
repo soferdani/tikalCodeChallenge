@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const useFetchData = () => {
-	// const [isLoading, setIsLoading] = useState(false);
+export const useFetchData = () => { // after successful creation of the other hook need to refactor this one
 	const [data, setDate] = useState([]);
 	const [dataForQ1, setDataForQ1] = useState([]);
 	const [pageNumber, setPageNumber] = useState(1);
@@ -61,10 +60,9 @@ export const useFetchData = () => {
 				}))
 		);
 		setDataForQ1(dataForTheQ1);
-
 		
 
 	}
-	return { data, dataForQ1 };
+	return { dataForQ1 };
 };
 
