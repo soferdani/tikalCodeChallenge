@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 100px;
+  gap: 20px;
 }
 
 
@@ -26,3 +26,25 @@ table {
   border-bottom: 1px solid rgb(15, 15, 15);
   }
   
+
+  .chart-wrap{
+    display: table;
+    table-layout: fixed;
+
+    width:60%;
+    max-width:700px;
+    height:200px;
+    margin:0 auto;
+
+    background-image:linear-gradient(bottom, rgba(0, 0, 0, 0.1) 2%, transparent 2%);
+    background-size: 100% 50px;
+    background-position: left top;
+  }
+
+
+  li{
+  position:relative;
+  display:table-cell;
+  vertical-align:bottom;
+  height:200px;
+  }

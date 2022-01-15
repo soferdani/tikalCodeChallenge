@@ -16,7 +16,12 @@ export const useFetchPlanets = () => {
         setDataForQ2(response.data.results);
         const cleanData = response.data.results
             .filter((item) => {return planetsNamesToCompere.includes(item.name);})
-            .map((item) => { return { name: item.name, population: item.population } });
+            .map((item) => {
+                
+                return {
+                    name: item.name, population: item.population
+                }
+            })
         
         setDataForQ2(cleanData);
     }    
