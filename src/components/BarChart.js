@@ -4,9 +4,7 @@ export default function BarChart({ planets }) {
     planets.forEach(planet => { 
         sum += parseInt(planet.population)
     })
-    console.log(sum);
     let updatedPlanets = planets.map(planet => { 
-        console.log();
         return {
             name: planet.name,
             population : planet.population,
@@ -25,13 +23,12 @@ export default function BarChart({ planets }) {
         }
     }
 
-
 	return (
         <ul className="chart-wrap">
             {updatedPlanets.map((planet, index) => {
                 return (
                     <li key={index}>
-                        <span key={index} style={returnCssProp(planet.percent)}>{planet.population}</span>
+                        <span key={index} style={returnCssProp(planet.percent)}>{(planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ","))}</span>
                         <br/>
                         <span>{planet.name}</span>
                     </li>
