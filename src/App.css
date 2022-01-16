@@ -66,3 +66,9 @@ table {
     position: relative;
     top: -50%;
   }
+
+
+  .name {
+    position: relative;
+    top: 50%;
+  }
