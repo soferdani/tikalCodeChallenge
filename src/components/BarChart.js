@@ -1,39 +1,33 @@
 export default function BarChart({ planets }) {
-    
-    let sum = 0
-    planets.forEach(planet => { 
-        sum += parseInt(planet.population)
-    })
-    let updatedPlanets = planets.map(planet => { 
-        return {
-            name: planet.name,
-            population : planet.population,
-            percent: ((parseInt(planet.population) / sum) * 100).toFixed(2)
-        }
-    })
+	let sum = 0;
+	planets.forEach((planet) => {
+		sum += parseInt(planet.population);
+	});
+	let updatedPlanets = planets.map((planet) => {
+		return {
+			name: planet.name,
+			population: planet.population,
+			percent: ((parseInt(planet.population) / sum) * 100).toFixed(2),
+		};
+	});
 
-
-    const returnCssProp = (percent) => { 
-        return {
-            margin: '0 1em',
-            display: 'block',
-            background: 'rgba(#d1ecfa, .75)',
-            height: `${percent}%`,
-            backgroundColor: '#d1ecfa',
-        }
-    }
+    const returnCssProp = (percent) => {
+        let newPercent = parseInt(percent) + 10
+		return {
+			height: `${newPercent}%`,
+		};
+	};
 
 	return (
-        <ul className="chart-wrap">
-            {updatedPlanets.map((planet, index) => {
+        <div className='bar-chart'>
+            {updatedPlanets.map((planet, index) => { 
                 return (
-                    <li key={index}>
-                        <span key={index} style={returnCssProp(planet.percent)}>{(planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ","))}</span>
-                        <br/>
-                        <span>{planet.name}</span>
-                    </li>
+                    <div key={index} className="box" style={returnCssProp(planet.percent)} >
+                        <div className="population">{planet.population.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+                        <div className="name">{planet.name}</div>
+                    </div>        
                 )
             })}
-        </ul>
+		</div>
 	);
 }
