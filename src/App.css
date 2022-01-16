@@ -63,5 +63,6 @@ table {
   }
 
   .population{
-    
+    position: relative;
+    top: -50%;
   }
