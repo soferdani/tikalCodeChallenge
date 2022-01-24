@@ -36,6 +36,7 @@ export const useFetchData = () => { // after successful creation of the other ho
 			return toReturn;
 		};
 
+		
 		const fetchPilotInfoFromUrl = async (pilotsUrl) => {
 			let allPilotsData = [];
 			for (let pilotUrl of pilotsUrl) {
